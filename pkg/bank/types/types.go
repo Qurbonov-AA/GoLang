@@ -27,3 +27,9 @@ type Payment struct {
 	ID     int
 	Amount Money
 }
+
+type PaymentSource struct {
+	Type    Currency
+	Number  PAN
+	Balance Money
+}

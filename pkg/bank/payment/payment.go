@@ -2,6 +2,7 @@ package payment
 
 import (
 	"bank/pkg/bank/types"
+	"fmt"
 )
 
 func Max(payments []types.Payment) types.Payment {
@@ -14,4 +15,17 @@ func Max(payments []types.Payment) types.Payment {
 		}
 	}
 	return payments[id]
+}
+
+func PaymentSources(cards []types.Card) []types.PaymentSource {
+	payments := []types.PaymentSource{}
+	for index, card := range cards {
+		if card.Balance > 0 && card.Active == true {
+			payments = append(payments, types.PaymentSource{Type: card.Currency, Number: card.PAN, Balance: card.Balance})
+			fmt.Println(index)
+
+		}
+	}
+	return payments
+
 }
